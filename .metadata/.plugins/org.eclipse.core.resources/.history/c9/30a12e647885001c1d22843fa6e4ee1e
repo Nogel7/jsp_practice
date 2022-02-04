@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<% 
+   String spot = request.getParameter("spot");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%
+   if(spot.equals("japan")){
+	   response.sendRedirect("travel_japan.jsp");
+   } else if (spot.equals("china")){
+	   response.sendRedirect("travel_china.jsp");
+   } else if (spot.equlas("canada")){
+	   response.sendRedirect("travel_canada.jsp");   
+   } else {
+	   response.sendRedirect("travel_Vietnam.jsp");
+   }   
+   }
+%>
+</body>
+</html>

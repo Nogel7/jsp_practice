@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    request.setCharacterEncoding("UTF-8");
+	/*	getParameter는 항상 String으로만 반환됨
+		String으로 반환된 값을 int와 double로 변환하려면
+		정수: Integer.parseInt(request.getParameter("name 값")); 
+		실수: Double.parseDouble(request.getParameter("name 값")) */
+	double height = Double.parseDouble(request.getParameter("height"));
+	int weight = Integer.parseInt(request.getParameter("weight"));
+	double bmi = (double)weight / ((height * 0.01) * (height * 0.01)); 
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
