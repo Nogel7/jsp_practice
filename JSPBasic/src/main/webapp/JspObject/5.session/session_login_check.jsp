@@ -12,6 +12,7 @@
     if(logincheck != null){
     	response.sendRedirect("session_welcome.jsp");
     }
+    
 %>
 <!DOCTYPE html>
 <html>

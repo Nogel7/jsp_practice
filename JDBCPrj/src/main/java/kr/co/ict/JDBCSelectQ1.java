@@ -19,18 +19,32 @@ public class JDBCSelectQ1 {
 		// 아이디명 앞뒤로 작은 따옴표가 들어갈 수 있도록
 		// 전달 쿼리문을 신경써서 작성해주세요.
 		// 힌트 : uid='" + 변수명 + "'"
-		Scanner scan = new Scanner("System.in");
-		System.out.println("조회할 유정의 아이디를 입력해주세요.");
 		
 		try {
+			Scanner scan = new Scanner(System.in);
+			System.out.println("조회할 유저의 아이디를 입력해주세요.");
+			String uid = scan.nextLine();
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcprac1",//접속url
-                    "root",//mysql 아이디
-                    "mysql");//mysql 비밀번호
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM userinfo");
 			
-		}catch(Exception e) {
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbcprac1",
+                    "root",
+                    "mysql");
+			
+			Statement stmt = con.createStatement();
+			
+			ResultSet rs = stmt.executeQuery("SELECT * FROM userinfo WHERE uid = '" + uid +"'");
+			
+			while(rs.next()) {
+				System.out.println("uname: " + rs.getString("uname") +
+									", uid: " + rs.getString(2) +
+									", upw: " + rs.getString(3) +
+									", uemail: " + rs.getString("uemail"));
+									
+			}
+			
+			
+			
+		    }catch(Exception e) {
 		 		e.printStackTrace();
 			
 	    } 
