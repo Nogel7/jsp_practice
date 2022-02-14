@@ -1,15 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	session.invalidate();
+%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>로그아웃</title>
 </head>
 <body>
-<h2>청소년 요금제입니다.</h2>
-<hr/>
-<a href="bus_form.jsp"></a>
-  <img src="repository/bus_junior.jpg">
+<%
+    response.sendRedirect("login_form.jsp");
+%>
 </body>
 </html>
