@@ -10,6 +10,8 @@ public class UserVO {
 		private String uPw;
 		private String uEmail;
 	    // 2. getter,setter, 생성자를 만들어주세요.
+		// 우클릭 -> source -> generate setters and getters (getter,setter)
+		// 우클릭 -> source -> generate constructor using fields(생성자)
 		public UserVO(String uName, String uId, String uPw, String uEmail) {
 			super();
 			this.uName = uName;
@@ -43,6 +45,8 @@ public class UserVO {
 			this.uEmail = uEmail;
 		}	
 		// 3. (선택)toString을 만들어주세요.
+		// toString은 콘솔이나 화면에 UserVO를 찍었을때 주소대신 내부 데이커가 나오도록 해 줍니다.
+		// source -> generate toString()
 		@Override
 		public String toString() {
 			return "UserVO [uName=" + uName + ", uId=" + uId + ", uPw=" + uPw + ", uEmail=" + uEmail + "]";

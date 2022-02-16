@@ -10,7 +10,7 @@
 	String dbId = "root";
 	String dbPw = "mysql";
 	
-	// java.sqp 관련 변수들도 앞으로 위에서 미리 선언해둡니다.
+	// java.sql 관련 변수들도 앞으로 위에서 미리 선언해둡니다.
 	ResultSet rs = null; // try진입 전에 선언해줘야 문서 전체적으로 쓸 수 있음
 	Connection con = null;
 	PreparedStatement pstmt = null;
@@ -48,9 +48,9 @@
     	
     	// 문제는 현재 이 구문에서는 rs.next()가 rs.close()를 한 이후에 배치되어 있어서
     	// 에러가 발생합니다.
-    	con.close();
-        pstmt.close();
-        rs.close();
+    	//con.close();
+        //pstmt.close();
+        //rs.close();
     }
 %>
 <!DOCTYPE html>
