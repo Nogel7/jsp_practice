@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
+<%@ page import="kr.co.ict.UserVO" %>
+<%@page import="kr.co.ict.UserDAO"%>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%  
     // 1. 세션에서 아이디를 얻어옵니다. 세션결과값이 널이면 login_form.jsp로 이동
     String sId = (String)session.getAttribute("session_id");
@@ -9,6 +13,7 @@
     	response.sendRedirect("login_form.jsp");
     }
     // 2. DB 연결
+    /*
     String dbType = "com.mysql.cj.jdbc.Driver";
     String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
     String dbId = "root";
@@ -44,6 +49,17 @@
     } finally {
     	
     }
+    */
+    // 5. 하단 form의 value에 해당 변수에 든 값이 들어가도록 설정합니다.
+    
+    // DAO를 활용한 로직으로 전환
+    // 1. DAO 생성
+    UserDAO dao = new UserDAO();
+    // 2. DAO내부에서 회원 1명의 정보만 가져오는 getUserData 호출
+    UserVO user = dao.getUserData(sId);// sId는 이미 세션에서 얻어왔습니다.
+    // 3. 얻어온 user 내용물 확인
+    //out.println(user + "<br/>");// UserVO에 toString메서드가 있어서 내용물이 출력됨.
+    // 4. user 내용물을 아래쪽 표현식에 getter로 집어넣어주기
 %>
 <!DOCTYPE html>
 <html>
@@ -60,8 +76,8 @@
     <h1><%=sId %>계정의 정보를 수정합니다!</h1>
     <form action="update_check.jsp" method="post">
         <input type="password" name="fpw" placeholder="비밀번호" required><br/>
-        <input type = "text" name = "fname" placeholder="이름" value="<%=tName%>" required/><br>
-		<input type = "email" name = "femail" placeholder="이메일" value="<%=tEmail %>" required/><br>
+        <input type = "text" name = "fname" placeholder="이름" value="<%=user.getuName() %>" required/><br>
+		<input type = "email" name = "femail" placeholder="이메일" value="<%=user.getuEmail() %>" required/><br>
 		<input type = "submit"  value="수정하기"/>
 		<input type = "reset" value="초기화"/>
     </form>
