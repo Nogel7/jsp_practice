@@ -5,6 +5,7 @@
     // ID님 접속을 환영합니다. 라고 안내해주는 화면을 만들어보겠습니다.
     // 추후 여기에는 탈퇴하기, 가입하기 정보수정하기 버튼이 추가될 예정입니다.
     String sId = (String)session.getAttribute("session_id");
+    String sPw = (String)session.getAttribute("session_pw");
     
     // 로그인 안 된 사용자가 여기로 접근하면 로그인페이지로 보내주세요.
     if(sId == null){
