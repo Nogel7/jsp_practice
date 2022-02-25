@@ -13,10 +13,10 @@
     System.out.println("폼에서 날린 비밀번호 : " + fPw);
     
     // DB 연결을 위한 변수선언
-    String dbType = "com.mysql.cj.jdbc.Driver";
-	String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
-	String dbId = "root";
-	String dbPw = "mysql";
+    //String dbType = "com.mysql.cj.jdbc.Driver";
+	//String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
+	//String dbId = "root";
+	//String dbPw = "mysql";
 	/*
     try{
     	// 1. DB종류 선택 및 연결
@@ -33,7 +33,7 @@
     	*/
     	// 1~3번까지의 로직을 DAO의 getUserData를 사용해 수행하도록 변경해주세요.
     	// (login_update.jsp에서 UserVO를 받아오는 부분을 참고하세요.)
-    	UserDAO dao = new UserDAO();
+    	UserDAO dao = UserDAO.getInstance();
     	UserVO user = dao.getUserData(fId);
     	// UserVO getUserData() 결과 받기.
     	System.out.println("DB에서 받아온 정보 : " + user);   	   	

@@ -44,8 +44,8 @@
     	out.println("회원가입이 완료되었습니다.");
     }
 	*/
-	UserDAO dao = new UserDAO();
-	dao.insertUser(fId, fPw, fName, fEmail);
+	UserDAO dao = UserDAO.getInstance();
+	dao.insertUser(fName, fId, fPw, fEmail);
   
 %>
 <!DOCTYPE html>
