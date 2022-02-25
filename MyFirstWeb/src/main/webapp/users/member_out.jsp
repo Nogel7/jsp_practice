@@ -1,6 +1,8 @@
 <%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="kr.co.ict.UserVO" %>
+<%@ page import="kr.co.ict.UserDAO"%>
 <%
     // DB연결 후, 세션에서 받아온 아이디를 이용해
     // 회원탈퇴 후 body태그 내에는 "아이디 회원의 탈퇴가 완료되었습니다."
@@ -10,6 +12,7 @@
     // 폼에서 데이터를 가져오는 경우(request.getPatameter())
     // 세션에서 가져오는 경우(session.getAttribute())
     String sId = (String)session.getAttribute("session_id");
+/*
     // 1. DB연결용 변수선언
     String dbType = "com.mysql.cj.jdbc.Driver";
 	String dbUrl = "jdbc:mysql://localhost:3306/jdbcprac1";
@@ -37,6 +40,12 @@
 		session.invalidate();
 		//response.sendRedirect("login_form.jsp");// 로그인창으로 돌려보내기
 	}
+	*/
+	// 삭제로직 구현
+	UserDAO dao = new UserDAO();
+	dao.deleteUser(sId);
+	// 삭제가 성공했건 실패했건 로그아웃에 접근한 자체로 세션 파기
+	session.invalidate();
 			
 %>
 <!DOCTYPE html>
