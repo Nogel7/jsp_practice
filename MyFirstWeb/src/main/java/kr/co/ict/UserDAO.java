@@ -159,7 +159,7 @@ public class UserDAO {
 	// update_check.jsp에 있는 쿼리문을 실행하기 위해
 	// id, pw, name, email 정보를 모두 받아옵니다.
 	
-	public void userCheck(String uPw, String uName, String uEmail, String uId){
+	public void userCheck(String uId, String uPw, String uName, String uEmail){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		// ResultSet은 SELECT구문에만 필요함

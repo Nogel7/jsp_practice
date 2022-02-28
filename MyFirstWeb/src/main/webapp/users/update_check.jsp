@@ -47,7 +47,7 @@
     */
     // 위쪽 3~6코드를 DAO로 대체해서 처리해주세요
     UserDAO dao = UserDAO.getInstance();
-    dao.userCheck(fName, sId, fPw, fEmail); // return void인경우는 왼쪽에 대입하면 안되고 호출만 하면된다.
+    dao.userCheck(sId, fPw, fName, fEmail); // return void인경우는 왼쪽에 대입하면 안되고 호출만 하면된다.
     // 7. body태그에 XXX 회원의 정보가 수정되었습니다.라고 안내해주고
     // 웰컴페이지로 돌아갈 수 있는 링크 넣어주기
     
