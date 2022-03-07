@@ -1,6 +1,6 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="kr.co.ict.UserVO" %>
-<%@page import="kr.co.ict.UserDAO"%>
+<%@ page import="kr.co.ict.UserDAO"%>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -58,7 +58,7 @@
     			// 로그인 성공 후 웰컴페이지로 보내주기
     			response.sendRedirect("login_welcome.jsp");
     		}else{
-    			out.println("<h1>비밀번호가 없습니다 . 다시 확인해 주세요.<h1>");
+    			out.println("<script>alert('비밀번호가 없습니다 . 다시 확인해 주세요.'); </script>");
     		}
     	}else{
     		out.println("<h1>아이디가 없습니다. 입력 아이디를 확인해주세요.<h1>");
