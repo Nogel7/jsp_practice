@@ -132,4 +132,51 @@ package kr.co.ict;
 
 		}
 	}
+	
+    // 글 한개가 필요한 상황이므로 BoardVO 하나면 처리 가능
+    // SELECT * FROM boardTbl WHERE board_num = ?
+    public BoardVO getBoardDetail(int board_num) {
+    	// DB연동구문을 작성해보세요.
+    	// try구문 초입에 ds부분까지만 하셔도 되는데 만약 다 작성 가능하면 다 작성해보세요.
+    	Connection con = null;
+    	PreparedStatement pstmt = null;
+    	ResultSet rs = null;
+    	BoardVO board = null;
+    	
+    	try {
+    		con = ds.getConnection();
+    		
+    		String sql = "SELECT * FROM boardTbl WHERE board_num = ?";
+    		pstmt = con.prepareStatement(sql);
+       		pstmt.setInt(1, board_num);
+       		
+    		rs = pstmt.executeQuery();
+    		
+    		// 결과가 한개만 나오가나 아니기 때문에 rs.next
+    		if(rs.next()) {
+    			int boardNum = rs.getInt("board_num");
+    			String title = rs.getString("title");
+    			String content = rs.getString("content");
+    			String writer = rs.getString("writer");
+				Date bDate = rs.getDate("bdate");
+				Date mDate = rs.getDate("mdate");
+				int hit = rs.getInt("hit");
+				
+				board = new BoardVO(boardNum, title, content, writer, bDate, mDate, hit);
+    		}
+    	} catch (Exception e){
+			e.printStackTrace();
+		} finally {
+			try {
+				// .close()는 무조건 try블럭에 있어야 하기 때문에 finally 내부에서 추가로 try블럭 설정
+				con.close();
+				pstmt.close();
+				rs.close();
+			} catch(Exception e) {
+				e.printStackTrace();
+			}
+	}	
+    	return board;
+  }
 }
+	

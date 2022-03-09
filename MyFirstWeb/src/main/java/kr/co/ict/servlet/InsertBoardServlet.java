@@ -44,7 +44,8 @@ public class InsertBoardServlet extends HttpServlet {
 		dao.insertBoard(title,content,writer);
 		// 4.다 끝났다면, 리다이렉트 방식으로 서블릿 주소 boardlist로 이동시킵니다.
 		response.sendRedirect("http://localhost:8181/MyFirstWeb/boardList");
-		
+		RequestDispatcher dp = request.getRequestDispatcher("/board/boardlist.jsp");
+        dp.forward(request, response);
 	}
 
 }
