@@ -24,6 +24,6 @@
     <form action="http://localhost:8181/MyFirstWeb/boardUpdateForm" method="post">
         <input type="hidden" value="${board.board_num }" name="board_num">
         <input type="submit" value="수정하기">
-    </form>
+    </form>  
  </body>
 </html>
