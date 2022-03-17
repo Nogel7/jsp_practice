@@ -16,13 +16,9 @@ public class BoardInsertFormService implements IBoardService {
 		HttpSession session = request.getSession();
 		String sId = (String)session.getAttribute("session_id");
 		System.out.println("insertForm.do : " + sId);
-		
+		    
 		// 글쓰기창에 아이디를 보내서 로그인 사용자 명이 곧 아이디로 쓰이도록 처리
-		request.setAttribute("sId", sId);
-		
-		if(sId == null) {
-		    RequestDispatcher dp = request.getRequestDispatcher("/boardList.do");
-		    dp.forward(request, response);
+			request.setAttribute("sId", sId);
 		}
 	} 
-}
+
