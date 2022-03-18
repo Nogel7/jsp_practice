@@ -12,13 +12,32 @@ import kr.co.ict.BoardVO;
 // BoardListService 는 boardList 접속시 사용하는 로직을 관리합니다.
 public class BoardListService implements IBoardService {
 	
+	
 	// BoardListServlet에서 바인딩까지 복사해오면 됩니다.
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) {
+		
+		// 페이지 번호를 get방식으러 가져옵니다. 저장받아주세요.(?pagaNum=번호  형식으로 받아옵니다.)		
+		//int pNum = Integer.parseInt(request.getParameter("pageNum"));
+		String strpNum = request.getParameter("pageNum");
+		int pNum = 0;
+		//if(strpNum == null) {
+		//	pNum = 1;
+		//} else {
+		//	pNum = Integer.parseInt(strpNum);
+		//}		
+		
+		try {
+			pNum =Integer.parseInt(strpNum);
+		} catch(Exception e) {
+			pNum = 1;
+		}
+		
 		// 1. 접속시 BoardDAO 생성
 	    BoardDAO dao = BoardDAO.getInstance();
 	    // 2. BoardDAO의 getAllBoardList() 호출해 전체 게시글 정보 받아오기
-	    List<BoardVO> boardList = dao.getAllBoardList();  
+	    // 페이징 처리에 따라 추가적으로 페이지 번호를 넣어줘야함
+	    List<BoardVO> boardList = dao.getAllBoardList(pNum);  
 	    // 3. request.setAttribute로 바인딩하기
 	    request.setAttribute("boardList",boardList);
 	    
