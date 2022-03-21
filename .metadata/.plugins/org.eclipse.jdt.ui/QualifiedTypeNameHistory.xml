@@ -13,7 +13,6 @@
     <fullyQualifiedTypeName name="java.sql.Date"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="kr.co.ict.BoardVO"/>
-    <fullyQualifiedTypeName name="kr.co.ict.BoardDAO"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
     <fullyQualifiedTypeName name="kr.co.ict.servlet.service.IBoardService"/>
@@ -26,4 +25,6 @@
     <fullyQualifiedTypeName name="kr.co.ict.servlet.service.BoardInsertFormService"/>
     <fullyQualifiedTypeName name="javax.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
+    <fullyQualifiedTypeName name="kr.co.ict.BoardDAO"/>
+    <fullyQualifiedTypeName name="kr.co.ict.BoardDTO"/>
 </qualifiedTypeNameHistroy>

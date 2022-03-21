@@ -63,7 +63,7 @@ package kr.co.ict;
 				int limitNum = ((pageNum -1)*10);
 				
 				// SELECT * FROM userinfo 실행 및 ResultSet에 저장
-				String sql = "SELECT * FROM boardTbl ORDER BY board_num DESC limit ?,10";
+				String sql = "SELECT * FROM boardTbl ORDER BY board_num DESC limit ?,20";
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, limitNum);
 				
@@ -271,7 +271,38 @@ package kr.co.ict;
 					e.printStackTrace();
 				}
 		    } 
-	  }		
+	  }	
+    
+    // 페이징 처리를 위해 글 전체 개수를 구해오겠습니다.
+    // 하단에 public int getPageNum()을 작성해주세요.
+    // 쿼리문은 SELECT COUNT(*) FROM boardTbl; 입니다.
+    
+    public int getPageNum() {
+    	Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int pageNum = 0;
+		try {
+			con = ds.getConnection();
+			String sql = "SELECT COUNT(*) FROM boardTbl";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				pageNum = rs.getInt(1);
+			}
+        } catch (Exception e){
+		    e.printStackTrace();
+	    } finally {
+		try {
+			con.close();
+			pstmt.close();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+   } 
+        return pageNum;
+   }
 }
     
 	

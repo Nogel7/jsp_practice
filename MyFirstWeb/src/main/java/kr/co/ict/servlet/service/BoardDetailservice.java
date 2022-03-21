@@ -24,7 +24,7 @@ public class BoardDetailservice implements IBoardService {
 		// 정보가 제대로 들어왔는지 디버깅 해보겠습니다.
 		//System.out.println(board);
 		// 디테일페이지로 포워딩(강사 기준 boarddetail.jsp)후 화면에 데이터 나오는지 체크
-		// 데이터 바인등
+		// 데이터 바인딩
 		request.setAttribute("board",board);
 	
 	}
