@@ -8,18 +8,18 @@ package kr.co.ict;
 // 사용하는 사람이 부르고싶은대로 부르셔도 무방합니다.
 public class BoardDTO {
 	private int boardCount; // 전체 글 개수
-	private int currenPage; // 현재 보고있는 페이지
+	private int currentPage; // 현재 보고있는 페이지
 	private int totalPages; // 전체 페에지 개수
 	private int startPage;  // 시작 페이지 번호
 	private int endPage;    // 끝 페이지 번호
-	private static final int NAV_NUM = 5; // 페이지는 10개씩 링크 표시(하단에 깔릴 버튼은 10개씩)
-	private static final int BOARD_NUM = 20; // 글도 10개씩 표시(DAO의 limit 구문도 함께 수정해야함)
+	private static final int NAV_NUM = 10; // 페이지는 10개씩 링크 표시(하단에 깔릴 버튼은 10개씩)
+	private static final int BOARD_NUM = 10; // 글도 10개씩 표시(DAO의 limit 구문도 함께 수정해야함)
 	
 	// 생성자 생서이 모든 정보를 자동으로 구하도록 처리
 	public BoardDTO(int boardCount, int currentPage) {
 		// 총 글 갯수와, 현재 조회중안 페이지 정보를 입력받아  아래에 깔릴 버튼개수, 현재 깔려야하는 번호대를 구합니다.
 		this.boardCount = boardCount;
-		this.currenPage = currentPage;
+		this.currentPage = currentPage;
 		
 		// 글이 없다면
 		if(boardCount == 0) {
@@ -89,11 +89,17 @@ public class BoardDTO {
 	public int getEndPage() {
 		return endPage;
 	}
+	
+	// ${dto.currentPage}와 같은 형태로 자료를 EL문법으로 얻어와 활용하기 위해 getter가 필요합니다.
+	// currentPage에 대한 getter를 아래에 생성해주세요.
+	public int getCurrentPage() {
+		return currentPage;
+	}
     
 	// 디버깅을 위한 toString
 	@Override
 	public String toString() {
-		return "BoardDTO [boardCount=" + boardCount + ", currenPage=" + currenPage + ", totalPages=" + totalPages
+		return "BoardDTO [boardCount=" + boardCount + ", currenPage=" + currentPage + ", totalPages=" + totalPages
 				+ ", startPage=" + startPage + ", endPage=" + endPage + "]";
 	}
 	
